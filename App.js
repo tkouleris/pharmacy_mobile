@@ -15,8 +15,8 @@ export default function App() {
     const [districts, setDistricts] = useState([])
     const [districtOption, setDistrictOption] = useState('All')
 
-    useLayoutEffect(() => {
-        let data = getData().then((data)=>{
+    useEffect(() => {
+        getData().then((data)=>{
             setDistricts(data.districts)
             setPharmacies(data.pharmacies)
             // setPharmaciesCopy(data.pharmacies)
@@ -24,9 +24,9 @@ export default function App() {
 
     }, []);
 
-    useEffect(() => {
-        console.log('option changed')
-    }, [districtOption]);
+    // useEffect(() => {
+    //     console.log('option changed')
+    // }, [districtOption]);
 
     // useEffect(() => {
     //         filter(districtOption).then((filtered)=>{
@@ -746,7 +746,7 @@ export default function App() {
                         // )
                     })}
                 >
-                    {props => <Pharmacies {...props} pharmacies={pharmacies}/>}
+                    {props => <Pharmacies {...props} pharmacies={pharmacies.filter((p) => districtOption === 'All' || p.perioxi === districtOption)}  />}
                 </Stack.Screen>
                 <Stack.Screen name="Districts">
                     {props => <Districts {...props} districts={districts} onSelect={selectDistrict} />}
