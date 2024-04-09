@@ -6,751 +6,685 @@ import {Ionicons} from "@expo/vector-icons";
 
 export default function App() {
 
-    const [data, setData] = useState([])
+    const [pharmacies, setPharmacies] = useState([])
 
     useEffect(() => {
-        setData(getData)
+        let data = getData()
+        setPharmacies(data.pharmacies)
     }, []);
 
     function getData() {
-        return [
-            {
-                "dieuthinsi": "Ν. ΚΑΖΑΝΤΖΑΚΗ 28 ΚΑΙ Μ. ΜΑΥΡΟΓΕΝΟΥΣ 29",
-                "farmakeio": "ΓΚΙΛΛΑ ΚΩΝΣΤΑΝΤΙΝΑ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΑΓ.ΑΝΑΡΓΥΡΟΙ",
-                "tilefono": "2108329919"
-            },
-            {
-                "dieuthinsi": "Ν.ΠΛΑΣΤΗΡΑ 60",
-                "farmakeio": "ΣΟΥΣΑΝΗΣ ΔΗΜΗΤΡΙΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΑΓ.ΑΝΑΡΓΥΡΟΙ",
-                "tilefono": "2108329174"
-            },
-            {
-                "dieuthinsi": "ΕΛ. ΒΕΝΙΖΕΛΟΥ 126",
-                "farmakeio": "ΠΕΦΑΝΗΣ ΗΛΙΑΣ - ΠΕΦΑΝΗΣ ΝΙΚΟΛΑΟΣ Ο.Ε.",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΑΓ.ΒΑΡΒΑΡΑ",
-                "tilefono": "2105690708"
-            },
-            {
-                "dieuthinsi": "ΜΕΝΕΛΑΟΥ 13 ΚΑΙ ΣΟΦΟΚΛΕΟΥΣ",
-                "farmakeio": "ΜΠΟΥΓΙΑΚΛΗ ΚΥΡΙΑΚΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΑΓ.ΔΗΜΗΤΡΙΟΣ",
-                "tilefono": "2109718698"
-            },
-            {
-                "dieuthinsi": "Λ. ΜΕΣΟΓΕΙΩΝ 314",
-                "farmakeio": "ΝΙΚΗΤΑ ΓΕΩΡΓΙΑ - ΠΑΡΑΣΚΕΥΗ ΚΑΙ ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΑΓ.ΠΑΡΑΣΚΕΥΗ",
-                "tilefono": "2162023895"
-            },
-            {
-                "dieuthinsi": "ΔΕΡΒΕΝΑΚΙΩΝ 78",
-                "farmakeio": "ΠΑΠΑΕΥΘΥΜΙΟΥ ΒΑΣΙΛΕΙΟΣ (2ο)",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΑΓ.ΠΑΡΑΣΚΕΥΗ",
-                "tilefono": "2117408875"
-            },
-            {
-                "dieuthinsi": "ΠΛΑΤΕΙΑ ΔΗΜΟΚΡΑΤΙΑΣ  7",
-                "farmakeio": "ΔΗΜΗΤΡΙΑΔΗΣ  ΤΡΙΑΝΤΑΦΥΛΛΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΑΓ.ΣΤΕΦΑΝΟΣ",
-                "tilefono": "2108141625"
-            },
-            {
-                "dieuthinsi": "ΜΑΓΝΗΣΙΑΣ 48",
-                "farmakeio": "ΦΙΝΤΖΟΥ ΕΙΡΗΝΗ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΑΙΓΑΛΕΩ",
-                "tilefono": "2105905126"
-            },
-            {
-                "dieuthinsi": "ΜΕΤΑΜΟΡΦΩΣΕΩΣ 24 ΚΑΙ ΘΕΜΙΣΤΟΚΛΕΟΥΣ 23",
-                "farmakeio": "ΦΑΚΑΛΟΣ ΔΗΜΗΤΡΙΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΑΛΙΜΟΣ",
-                "tilefono": "2109836835"
-            },
-            {
-                "dieuthinsi": "ΠΑΝΟΡΜΟΥ 34",
-                "farmakeio": "ΒΟΥΛΓΑΡΑΚΗΣ ΓΕΩΡΓΙΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΑΜΠΕΛΟΚΗΠΟΙ",
-                "tilefono": "2106914630"
-            },
-            {
-                "dieuthinsi": "ΛΕΩΦ. ΚΑΡΑΜΑΝΛΗ 27",
-                "farmakeio": "ΚΟΡΙΤΣΙΑΔΗΣ ΣΤΑΥΡΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΑΝΑΒΥΣΣΟΣ",
-                "tilefono": "2291078061"
-            },
-            {
-                "dieuthinsi": "ΛΕΩΦΟΡΟΣ ΦΥΛΗΣ 110",
-                "farmakeio": "ΚΥΡΙΑΚΟΠΟΥΛΟΥ ΘΕΟΔΩΡΑ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΑΝΩ ΛΙΟΣΙΑ",
-                "tilefono": "2130990064"
-            },
-            {
-                "dieuthinsi": "ΜΑΡ.ΓΕΡΟΥΛΑΝΟΥ 57",
-                "farmakeio": "ΚΕΛΕΠΕΣΗ ΜΑΡΙΑ-ΠΑΠΑΔΗΜΗΤΡΙΟΥ ΕΥΑΓΓΕΛΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΑΡΓΥΡΟΥΠΟΛΗ",
-                "tilefono": "2109932570"
-            },
-            {
-                "dieuthinsi": "ΙΩΑΝ. ΠΡΟΔΡΟΜΟΥ 22 ΚΑΙ ΑΡΤΗΣ (ΤΡΟΛΕΥ)",
-                "farmakeio": "ΦΑΝΟΥΡΑΚΗ ΚΥΡΙΑΚΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΑΡΤΕΜΙΣ",
-                "tilefono": "2294081001"
-            },
-            {
-                "dieuthinsi": "ΣΑΛΑΜΙΝΟΣ 17",
-                "farmakeio": "ΛΙΟΣΗ ΙΩΑΝΝΑ - ΚΑΡΑΜΠΟΥΛΑΣ ΣΠΥΡΙΔΩΝ Ο.Ε.",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΑΣΠΡΟΠΥΡΓΟΣ",
-                "tilefono": "2105576927"
-            },
-            {
-                "dieuthinsi": "ΑΘΗΝΩΝ - ΧΑΛΚΙΔΟΣ 24",
-                "farmakeio": "ΜΑΝΙΤΑΡΗΣ ΑΠΟΣΤΟΛΟΣ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΑΥΛΩΝΑΣ",
-                "tilefono": "2295041233"
-            },
-            {
-                "dieuthinsi": "ΧΡΥΣΑΝΘΕΜΩΝ 1",
-                "farmakeio": "ΘΑΝΟΠΟΥΛΟΥ ΣΤΑΜΑΤΙΝΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 8 ΒΡΑΔΥ",
-                "perioxi": "ΑΦΙΔΝΑΙ",
-                "tilefono": "2295026417"
-            },
-            {
-                "dieuthinsi": "ΠΑΡΝΗΘΟΣ  118",
-                "farmakeio": "ΓΚΑΤΖΙΟΥ  ΣΟΦΙΑ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΑΧΑΡΝΑΙ",
-                "tilefono": "2102403004"
-            },
-            {
-                "dieuthinsi": "ΠΑΠΑΓΟΥ 28",
-                "farmakeio": "ΜΑΔΟΥΡΟΣ  ΑΝΤΩΝΙΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΒΟΥΛΑ",
-                "tilefono": "2108954151"
-            },
-            {
-                "dieuthinsi": "ΑΝΑΛΗΨΕΩΣ 4-ΓΡΑΜΜΟΥ",
-                "farmakeio": "ΣΥΝΟΔΙΝΟΥ  ΜΑΡΙΑ ΚΑΙ ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΒΡΙΛΗΣΣΙΑ",
-                "tilefono": "2106812100"
-            },
-            {
-                "dieuthinsi": "ΑΓ.ΣΟΦΙΑΣ 99",
-                "farmakeio": "ΓΕΝΗΤΣΑΡΕΛΗΣ ΣΑΡΑΝΤΗΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΒΥΡΩΝΑΣ",
-                "tilefono": "2107628640"
-            },
-            {
-                "dieuthinsi": "ΑΝΑΠΗΡΩΝ ΠΟΛΕΜΟΥ 18",
-                "farmakeio": "ΠΑΠΑΟΡΦΑΝΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΒΥΡΩΝΑΣ",
-                "tilefono": "2111845939"
-            },
-            {
-                "dieuthinsi": "Λ. ΒΕΙΚΟΥ 46",
-                "farmakeio": "ΒΑΕΝΑ ΑΠΟΣΤΟΛΙΑ (ΦΑΡΜΑΚΕΙΟ LIFE PHARMACY Ε.Ε. )",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΓΑΛΑΤΣΙ",
-                "tilefono": "2102130250"
-            },
-            {
-                "dieuthinsi": "Λ.ΓΑΛΑΤΣΙΟΥ 81",
-                "farmakeio": "ΤΣΕΛΕ ΕΛΕΝΗ - ΘΕΟΧΑΡΟΠΟΥΛΟΥ ΕΥΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΓΑΛΑΤΣΙ",
-                "tilefono": "2102918047"
-            },
-            {
-                "dieuthinsi": "Λ. ΓΕΡΑΚΑ 36",
-                "farmakeio": "ΜΑΥΡΟΥΚΛΗΣ ΣΩΤΗΡΙΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΓΕΡΑΚΑΣ",
-                "tilefono": "2111162240"
-            },
-            {
-                "dieuthinsi": "ΒΑΦΕΙΟΧΩΡΙΟΥ 63",
-                "farmakeio": "ΚΑΤΣΑΡΑ ΠΟΠΗ-ΝΑΤΑΛΙΑ ΚΑΙ ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΓΚΥΖΗ",
-                "tilefono": "2106410665"
-            },
-            {
-                "dieuthinsi": "ΟΛΥΜΠΙΟΝΙΚΩΝ 49",
-                "farmakeio": "ΚΑΡΑΓΙΑΝΝΟΠΟΥΛΟΣ ΙΩΑΝΝΗΣ ΚΑΙ ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΓΛΥΚΑ ΝΕΡΑ",
-                "tilefono": "2106048480"
-            },
-            {
-                "dieuthinsi": "ΑΝΔΡΕΑ ΠΑΠΑΝΔΡΕΟΥ 3",
-                "farmakeio": "ΒΑΒΛΑΣ ΙΩΑΝΝΗΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΓΛΥΦΑΔΑ",
-                "tilefono": "2108945058"
-            },
-            {
-                "dieuthinsi": "ΑΝΔΡ. ΛΑΖΑΡΑΚΗ  35",
-                "farmakeio": "ΤΖΑΡΑΤΖΟΥΡΗ ΜΑΡΙΑ & ΣΙΑ Ο.Ε..",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΓΛΥΦΑΔΑ",
-                "tilefono": "2108980903"
-            },
-            {
-                "dieuthinsi": "ΜΙΧΑΛΑΚΟΠΟΥΛΟΥ 212",
-                "farmakeio": "ΣΤΑΥΡΙΔΗΣ ΧΡΗΣΤΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΓΟΥΔΗ",
-                "tilefono": "2107474349"
-            },
-            {
-                "dieuthinsi": "ΠΑΓΚΑΛΟΥ 81",
-                "farmakeio": "ΜΑΝΓΚΑΝΙ ΤΖΟΥΖΕΠΠΑ ΚΑΙ ΣΙΑ ΟΕ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΕΛΕΥΣΙΝΑ",
-                "tilefono": "2105547602"
-            },
-            {
-                "dieuthinsi": "ΚΑΤΕΧΑΚΗ 66",
-                "farmakeio": "ΦΛΩΡΟΥ ΠΑΝΑΓΙΩΤΑ - ΜΑΡΙΑ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΕΛΛΗΝΟΡΩΣΩΝ",
-                "tilefono": "2106995854"
-            },
-            {
-                "dieuthinsi": "Χ.ΤΡΙΚΟΥΠΗ 78",
-                "farmakeio": "ΚΑΣΟΥΛΗΣ ΣΕΡΑΦΕΙΜ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΕΞΑΡΧΕΙΑ",
-                "tilefono": "2103625514"
-            },
-            {
-                "dieuthinsi": "ΜΑΡΙΝΟΥ ΑΝΤΥΠΑ 42",
-                "farmakeio": "ΙΩΣΗΦΙΔΗΣ ΝΙΚΟΛΑΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΗΛΙΟΥΠΟΛΗ",
-                "tilefono": "2109707586"
-            },
-            {
-                "dieuthinsi": "ΑΡΧΙΜΗΔΟΥΣ 64",
-                "farmakeio": "ΚΑΚΑΓΙΑΝΝΗ ΕΛΕΥΘΕΡΙΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΗΛΙΟΥΠΟΛΗ",
-                "tilefono": "2109926518"
-            },
-            {
-                "dieuthinsi": "Λ. ΔΗΜΟΚΡΑΤΙΑΣ 67",
-                "farmakeio": "ΜΟΥΡΙΚΗΣ ΑΡΙΣΤΟΜΕΝΗΣ ΚΑΙ ΣΙΑ  Ο.Ε.",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΙΛΙΟΝ",
-                "tilefono": "2102310080"
-            },
-            {
-                "dieuthinsi": "ΦΙΛΟΚΤΗΤΟΥ 101",
-                "farmakeio": "ΤΖΑΝΑΚΗΣ ΧΡΗΣΤΟΣ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΙΛΙΟΝ",
-                "tilefono": "2102631064"
-            },
-            {
-                "dieuthinsi": "ΓΡΗΓ.ΑΥΞΕΝΤΙΟΥ 52",
-                "farmakeio": "ΧΙΩΤΗ ΜΑΡΙΑ ΚΑΙ ΣΙΑ Ε.Ε. (ΜΑΡΙΑ ΚΩΝΣΤ. ΧΙΩΤΗ ΚΑΙ ΣΙΑ Ε.Ε.)",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΙΛΙΣΙΑ ΑΝΩ",
-                "tilefono": "2107755489"
-            },
-            {
-                "dieuthinsi": "ΛΥΚΟΥΡΓΟΥ 205",
-                "farmakeio": "ΚΟΤΡΙΔΗΣ ΕΥΑΓΓΕΛΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΚΑΛΛΙΘΕΑ",
-                "tilefono": "2109561643"
-            },
-            {
-                "dieuthinsi": "ΔΑΒΑΚΗ 22",
-                "farmakeio": "ΝΥΧΑΣ ΜΙΧΑΗΛ-ΝΥΧΑΣ ΓΕΩΡΓΙΟΣ ΟΕ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΚΑΛΛΙΘΕΑ",
-                "tilefono": "2109513048"
-            },
-            {
-                "dieuthinsi": "28ΗΣ ΟΚΤΩΒΡΙΟΥ 24",
-                "farmakeio": "ΚΙΟΥΣΗΣ ΠΑΝΑΓΙΩΤΗΣ (1)",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΚΑΛΥΒΙΑ ΘΟΡΙΚΟΥ",
-                "tilefono": "2299046434"
-            },
-            {
-                "dieuthinsi": "ΙΠΠΟΚΡΑΤΟΥΣ 13",
-                "farmakeio": "ΜΑΡΓΩΝΗ ΒΑΣΙΛΙΚΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΚΕΡΑΤΕΑ",
-                "tilefono": "2299042222"
-            },
-            {
-                "dieuthinsi": "ΒΑΣ.ΚΩΝΣΤΑΝΤΙΝΟΥ 51",
-                "farmakeio": "ΚΟΡΩΝΙΑ ΑΛΕΞΙΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΚΟΡΩΠΙ",
-                "tilefono": "2106626764"
-            },
-            {
-                "dieuthinsi": "ΑΤΤΙΚΗΣ 10",
-                "farmakeio": "ΤΣΑΚΟΥΜΗΣ ΓΕΩΡΓΙΟΣ - ΑΥΓΕΡΙΝΟΣ ΘΕΟΔΩΡΟΣ",
-                "katastasi": "False",
-                "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΚΟΡΩΠΙ",
-                "tilefono": "2106021115"
-            },
-            {
-                "dieuthinsi": "ΚΕΦΑΛΛΗΝΙΑΣ 18",
-                "farmakeio": "ΚΕΣΤΗ ΜΥΡΣΙΝΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΚΥΨΕΛΗ",
-                "tilefono": "2108216889"
-            },
-            {
-                "dieuthinsi": "ΓΑΛΑΖΙΑΣ ΑΚΤΗΣ ΚΑΙ ΚΙΡΚΗΣ 1",
-                "farmakeio": "ΒΡΟΥΤΣΗ ΑΙΚΑΤΕΡΙΝΗ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΛΑΓΟΝΗΣΙ",
-                "tilefono": "2291022699"
-            },
-            {
-                "dieuthinsi": "Ι.ΦΩΚΑ ΚΑΙ ΠΑΝΔΟΣΙΑΣ 2",
-                "farmakeio": "ΤΣΩΛΗΣ ΧΑΡΑΛΑΜΠΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΛΑΜΠΡΙΝΗ",
-                "tilefono": "2102138011"
-            },
-            {
-                "dieuthinsi": "ΣΜ.ΚΑΤΣΑΡΟΥ 12",
-                "farmakeio": "ΚΑΠΑΞΗΣ ΑΛΕΞ/ΔΡΟΣ-ΑΝΤΩΝΙΟΣ ΚΛΗΡΟΝΟΜΙΚΟ ΦΑΡΜΑΚΕΙΟ - ΚΑΠΑΞΗ-ΖΙΝΤΑΡΟΥ ΝΤΑΝ.ΦΛΩΡ.ΚΑΙ ΣΙΑ ΟΕ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΛΑΥΡΙΟ",
-                "tilefono": "2292025846"
-            },
-            {
-                "dieuthinsi": "Β.ΚΟΡΟΠΟΥΛΗ 15",
-                "farmakeio": "ΡΟΥΤΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΜΑΝΔΡΑ",
-                "tilefono": "2105551954"
-            },
-            {
-                "dieuthinsi": "ΑΘΗΝΑΣ 3",
-                "farmakeio": "ΚΑΤΣΑ ΑΙΚΑΤΕΡΙΝΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΜΑΡΑΘΩΝΑΣ",
-                "tilefono": "2294067610"
-            },
-            {
-                "dieuthinsi": "Κ. ΠΑΠΑΔΗΜΗΤΡΙΟΥ 15 Α",
-                "farmakeio": "ΜΙΧΑΙΡΙΝΑΣ ΓΕΩΡΓΙΟΣ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΜΑΡΚΟΠΟΥΛΟ",
-                "tilefono": "2299023171"
-            },
-            {
-                "dieuthinsi": "ΔΕΛΦΩΝ 5-ΔΗΜΗΤΣΑΝΗΣ",
-                "farmakeio": "ΑΠΟΣΤΟΛΟΠΟΥΛΟΥ ΕΙΡΗΝΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΜΑΡΟΥΣΙ",
-                "tilefono": "2106197569"
-            },
-            {
-                "dieuthinsi": "ΠΛΑΤΑΙΩΝ  4",
-                "farmakeio": "ΦΙΛΙΠΠΟΥ ΕΛΕΝΗ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΜΑΡΟΥΣΙ",
-                "tilefono": "2108061556"
-            },
-            {
-                "dieuthinsi": "ΒΥΖΑΝΤΙΟΥ 81",
-                "farmakeio": "ΣΠΥΡΑΤΟΥ ΑΙΚΑΤΕΡΙΝΗ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΜΕΓΑΡΑ",
-                "tilefono": "2296023017"
-            },
-            {
-                "dieuthinsi": "Φ. ΓΚΙΝΟΣΑΤΗ  73",
-                "farmakeio": "ΣΑΚΕΛΛΑΡΙΟΥ ΑΝΔΡΟΝΙΚΗ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΜΕΤΑΜΟΡΦΩΣΗ",
-                "tilefono": "2102847174"
-            },
-            {
-                "dieuthinsi": "ΕΛ.ΒΕΝΙΖΕΛΟΥ 117",
-                "farmakeio": "ΜΑΚΡΗ ΚΩΝΣΤΑΝΤΙΝΑ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "Ν.ΕΡΥΘΡΑΙΑ",
-                "tilefono": "2108001290"
-            },
-            {
-                "dieuthinsi": "Μ.ΑΝΤΥΠΑ 88",
-                "farmakeio": "ΚΑΜΠΕΡΗ ΑΓΓΕΛΙΚΗ ΚΑΙ ΣΙΑ  Ο.Ε.",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "Ν.ΗΡΑΚΛΕΙΟ",
-                "tilefono": "2102716436"
-            },
-            {
-                "dieuthinsi": "ΕΛ.ΒΕΝΙΖΕΛΟΥ 22",
-                "farmakeio": "ΜΟΣΧΟΒΗΣ ΧΑΡΑΛΑΜΠΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "Ν.ΙΩΝΙΑ",
-                "tilefono": "2102759464"
-            },
-            {
-                "dieuthinsi": "ΕΥΣΤΡΑΤΙΟΥ ΠΙΣΣΑ 40 ΚΑΙ ΜΑΝΔΡΟΚΛΕΟΥΣ",
-                "farmakeio": "ΒΕΡΓΟΥ ΜΑΡΙΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "Ν.ΚΟΣΜΟΣ",
-                "tilefono": "2109223375"
-            },
-            {
-                "dieuthinsi": "ΝΙΚΟΜΗΔΕΙΑΣ 2",
-                "farmakeio": "ΜΠΙΝΤΕΛΑ ΑΝΝΑ & ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "Ν.ΣΜΥΡΝΗ",
-                "tilefono": "2110154316"
-            },
-            {
-                "dieuthinsi": "ΚΛΕΙΣΘΕΝΟΥΣ 11",
-                "farmakeio": "ΖΑΓΚΟΣ ΙΩΑΝΝΗΣ ( ΖΑΓΚΟΣ ΙΩΑΝ. - ΒΑΙΔΑΚΗ ΕΙΡΗΝΗ Ο.Ε.)",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΟΜΟΝΟΙΑ",
-                "tilefono": "2105227837"
-            },
-            {
-                "dieuthinsi": "ΠΑΡΘΕΝΩΝΟΣ 83-85",
-                "farmakeio": "ΓΙΩΡΚΑΣ ΔΗΜΗΤΡΙΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "Π.ΦΑΛΗΡΟ",
-                "tilefono": "2109837999"
-            },
-            {
-                "dieuthinsi": "ΠΕΛΟΠΟΣ 1",
-                "farmakeio": "ΜΑΙΟΠΟΥΛΟΣ ΜΑΡΙΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "Π.ΦΑΛΗΡΟ",
-                "tilefono": "2109428455"
-            },
-            {
-                "dieuthinsi": "ΕΡΑΤΟΣΘΕΝΟΥΣ 22",
-                "farmakeio": "ΖΑΝΝΑΚΗ ΑΣΗΜΙΝΑ  ΚΑΙ ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΑΓΚΡΑΤΙ",
-                "tilefono": "2107519694"
-            },
-            {
-                "dieuthinsi": "Λ. ΛΑΥΡΙΟΥ 148  A",
-                "farmakeio": "ΘΑΝΑΣΟΥΡΑΣ ΓΕΩΡΓΙΟΣ - ΜΑΓΙΑΦΑ ΟΥΡΑΝΙΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΑΙΑΝΙΑ",
-                "tilefono": "2106028008"
-            },
-            {
-                "dieuthinsi": "Λ. ΜΑΡΑΘΩΝΟΣ 62",
-                "farmakeio": "ΘΑΝΑΣΟΥΡΑΣ ΓΕΩΡΓΙΟΣ (2) - ΦΟΥΣΕΚΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ",
-                "katastasi": "False",
-                "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΠΑΛΛΗΝΗ",
-                "tilefono": "2106030319"
-            },
-            {
-                "dieuthinsi": "ΛΕΟΝΤΑΡΙΟΥ 36",
-                "farmakeio": "ΜΩΡΑΙΤΟΥ ΠΑΡΑΣΚΕΥΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΑΛΛΗΝΗ",
-                "tilefono": "2106032677"
-            },
-            {
-                "dieuthinsi": "ΚΡΙΤΟΒΟΥΛΙΔΟΥ 18",
-                "farmakeio": "ΠΟΛΛΑΛΗ ΠΑΝΑΓΙΩΤΑ-ΚΑΡΑΜΗΤΣΟΣ ΔΗΜΗΤΡΙΟΣ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΠΑΤΗΣΙΑ ΚΑΤΩ",
-                "tilefono": "2108322196"
-            },
-            {
-                "dieuthinsi": "ΑΓ.ΛΑΥΡΑΣ 92",
-                "farmakeio": "ΕΛΕΥΘΕΡΙΑΔΗΣ ΕΛΕΥΘΕΡΙΟΣ (1)",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΠΑΤΗΣΙΑ ΤΕΡΜΑ",
-                "tilefono": "2102285223"
-            },
-            {
-                "dieuthinsi": "ΝΑΟΥΣΗΣ 108   ΧΡΥΣΟΥΠΟΛΗ",
-                "farmakeio": "ΜΠΟΥΣΜΠΟΥΛΑΣ ΗΛΙΑΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΕΡΙΣΤΕΡΙ",
-                "tilefono": "2105734264"
-            },
-            {
-                "dieuthinsi": "ΣΑΡΑΝΤΑΠΟΡΟΥ 59",
-                "farmakeio": "ΡΑΣΣΙΑ ΙΩΑΝΝΑ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΠΕΡΙΣΤΕΡΙ",
-                "tilefono": "2105716140"
-            },
-            {
-                "dieuthinsi": "ΤΡΙΩΝ ΙΕΡΑΡΧΩΝ 85",
-                "farmakeio": "ΣΙΔΗΡΟΠΟΥΛΟΥ ΜΑΛΑΜΑ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΕΤΡΑΛΩΝΑ ΑΝΩ",
-                "tilefono": "2103470059"
-            },
-            {
-                "dieuthinsi": "ΠΑΝΔΩΡΟΥ  58",
-                "farmakeio": "ΚΟΥΚΕΛΛΗ ΑΘΗΝΑ ΚΑΙ ΣΙΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΠΕΤΡΑΛΩΝΑ ΚΑΤΩ",
-                "tilefono": "2103427664"
-            },
-            {
-                "dieuthinsi": "ΚΟΛΟΚΟΤΡΩΝΗ 74",
-                "farmakeio": "ΚΟΛΕΛΗΣ ΑΛΕΞΑΝΔΡΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΠΕΤΡΟΥΠΟΛΗ",
-                "tilefono": "2105010021"
-            },
-            {
-                "dieuthinsi": "ΣΟΥΛΙΟΥ 148",
-                "farmakeio": "ΠΑΠΑΝΑΣΤΑΣΙΟΥ ΑΘΗΝΑ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΠΕΤΡΟΥΠΟΛΗ",
-                "tilefono": "2105017707"
-            },
-            {
-                "dieuthinsi": "ΠΑΤΗΣΙΩΝ 185",
-                "farmakeio": "ΚΑΡΑΣΤΑΤΗΡΑ ΕΥΓΕΝΙΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΛ.ΑΜΕΡΙΚΗΣ",
-                "tilefono": "2108673354"
-            },
-            {
-                "dieuthinsi": "ΑΡΙΣΤΟΜΕΝΟΥΣ 94",
-                "farmakeio": "ΚΟΝΤΑΚΤΣΗΣ ΠΑΝΑΓΙΩΤΗΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΠΛ.ΑΤΤΙΚΗΣ",
-                "tilefono": "2108652103"
-            },
-            {
-                "dieuthinsi": "ΙΟΥΛΙΑΝΟΥ 41-43",
-                "farmakeio": "ΜΠΑΣΕΑ ΧΡΥΣΟΥΛΑ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΠΛ.ΒΙΚΤΩΡΙΑΣ",
-                "tilefono": "2108221096"
-            },
-            {
-                "dieuthinsi": "Λ.ΠΟΡΤΟ ΡΑΦΤΗ 39",
-                "farmakeio": "ΤΑΛΙΑΔΩΡΟΣ ΘΕΟΔΟΣΙΟΣ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΠΟΡΤΟ ΡΑΦΤΗ",
-                "tilefono": "2299076035"
-            },
-            {
-                "dieuthinsi": "ΛΕΩΦ. ΑΜΑΛΙΑΣ ΦΛΕΜΙΝΓΚ  1",
-                "farmakeio": "ΜΠΙΡΗΣ ΑΝΤΩΝΙΟΣ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΡΑΦΗΝΑ",
-                "tilefono": "2294025537"
-            },
-            {
-                "dieuthinsi": "ΔΗΜΑΡΧΟΥ ΧΡ. ΜΠΕΚΑ  98",
-                "farmakeio": "ΣΚΟΡΔΙΑΛΟΥ ΠΕΛΑΓΙΑ (OLIBIA PHARMACY E.E.)",
-                "katastasi": "False",
-                "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΣΠΑΤΑ",
-                "tilefono": "2106635135"
-            },
-            {
-                "dieuthinsi": "ΒΑΣ.ΠΑΥΛΟΥ  86",
-                "farmakeio": "ΤΖΑΝΑΚΗΣ ΕΛΕΥΘΕΡΙΟΣ-ΤΖΑΝΑΚΗ ΣΤΑΥΡΟΥΛΑ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΣΠΑΤΑ",
-                "tilefono": "2106634834"
-            },
-            {
-                "dieuthinsi": "ΛΕΩΦ.ΩΡΩΠΟΥ-ΣΥΚΑΜΙΝΟΥ 125",
-                "farmakeio": "ΠΟΛΙΤΗΣ ΕΥΑΓΓΕΛΟΣ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
-                "perioxi": "ΣΥΚΑΜΙΝΟ",
-                "tilefono": "2295071660"
-            },
-            {
-                "dieuthinsi": "Γ. ΓΕΝΝΗΜΑΤΑ 159",
-                "farmakeio": "ΚΟΤΥΛΑΙΟΥ ΘΕΟΔΩΡΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΤΕΡΨΙΘΕΑ",
-                "tilefono": "2109626469"
-            },
-            {
-                "dieuthinsi": "ΘΕΡΜΟΠΥΛΩΝ 105",
-                "farmakeio": "ΣΕΛΕΚΟΥ ΧΡΥΣΑΝΘΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΧΑΙΔΑΡΙ",
-                "tilefono": "2105314802"
-            },
-            {
-                "dieuthinsi": "ΕΘΝ.ΑΝΤΙΣΤΑΣΕΩΣ 65",
-                "farmakeio": "ΒΛΑΧΛΗ ΙΟΥΛΙΑ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΧΑΛΑΝΔΡΙ",
-                "tilefono": "2106710936"
-            },
-            {
-                "dieuthinsi": "ΦΙΛ.ΛΙΤΣΑ 17",
-                "farmakeio": "ΓΑΛΑΝΗ ΚΥΡΙΑΚΗ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΧΑΛΑΝΔΡΙ",
-                "tilefono": "2106801560"
-            },
-            {
-                "dieuthinsi": "ΜΕΣΣΗΝΙΑΣ 31-ΤΥΜΦΡΗΣΤΟΥ",
-                "farmakeio": "ΣΑΡΤΖΕΤΑΚΗ ΑΝΑΣΤΑΣΙΑ",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΧΑΛΑΝΔΡΙ",
-                "tilefono": "2106840430"
-            },
-            {
-                "dieuthinsi": "ΠΑΠΑΝΙΚΟΛΗ 40",
-                "farmakeio": "ΨΑΘΑΣ ΝΙΚΟΛΑΟΣ ΚΑΙ ΣΙΑ Ε.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
-                "perioxi": "ΧΑΛΑΝΔΡΙ",
-                "tilefono": "2106815190"
-            },
-            {
-                "dieuthinsi": "ΑΕΤΙΔΕΩΝ 6-8",
-                "farmakeio": "ΒΕΛΕΤΑΚΟΥ ΚΑΛΛΙΡΡΟΗ - ΜΑΧΑΙΡΑΣ ΙΩΑΝΝΗΣ Ο.Ε.",
-                "katastasi": "False",
-                "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
-                "perioxi": "ΧΟΛΑΡΓΟΣ",
-                "tilefono": "2106529568"
-            },
-            {
-                "dieuthinsi": "ΧΡΥΣ.ΣΜΥΡΝΗΣ 17",
-                "farmakeio": "ΓΚΟΝΗ ΒΑΣΙΛΙΚΗ",
-                "katastasi": "True",
-                "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
-                "perioxi": "ΧΟΛΑΡΓΟΣ",
-                "tilefono": "2106515944"
-            }
-        ]
+        return {
+            "date": "Δευτέρα, 8 Απριλίου 2024",
+            "districts": [
+                "ΑΓ.ΑΝΑΡΓΥΡΟΙ",
+                "ΑΓ.ΒΑΡΒΑΡΑ",
+                "ΑΓ.ΔΗΜΗΤΡΙΟΣ",
+                "ΑΓ.ΙΩΑΝΝΗΣ ΒΟΥΛΙΑΓΜΕΝΗΣ",
+                "ΑΓ.ΣΤΕΦΑΝΟΣ",
+                "ΑΙΓΑΛΕΩ",
+                "ΑΛΙΜΟΣ",
+                "ΑΜΠΕΛΟΚΗΠΟΙ",
+                "ΑΝΩ ΛΙΟΣΙΑ",
+                "ΑΡΓΥΡΟΥΠΟΛΗ",
+                "ΑΡΤΕΜΙΣ",
+                "ΑΣΠΡΟΠΥΡΓΟΣ",
+                "ΑΥΛΩΝΑΣ",
+                "ΑΦΙΔΝΑΙ",
+                "ΑΧΑΡΝΑΙ",
+                "ΒΟΥΛΙΑΓΜΕΝΗ",
+                "ΓΑΛΑΤΣΙ",
+                "ΓΕΡΑΚΑΣ",
+                "ΓΚΥΖΗ",
+                "ΓΛΥΚΑ ΝΕΡΑ",
+                "ΓΛΥΦΑΔΑ",
+                "ΕΛΕΥΣΙΝΑ",
+                "ΖΩΓΡΑΦΟΥ",
+                "ΗΛΙΟΥΠΟΛΗ",
+                "ΙΛΙΟΝ",
+                "ΚΑΛΛΙΘΕΑ",
+                "ΚΑΛΥΒΙΑ ΘΟΡΙΚΟΥ",
+                "ΚΕΝΤΡΟ",
+                "ΚΕΡΑΤΕΑ",
+                "ΚΗΦΙΣΙΑ",
+                "ΚΟΡΩΠΙ",
+                "ΚΟΥΚΑΚΙ",
+                "ΚΥΨΕΛΗ",
+                "ΛΑΓΟΝΗΣΙ",
+                "ΛΑΥΡΙΟ",
+                "ΜΑΝΔΡΑ",
+                "ΜΑΡΑΘΩΝΑΣ",
+                "ΜΑΡΚΟΠΟΥΛΟ",
+                "ΜΑΡΟΥΣΙ",
+                "ΜΕΓΑΡΑ",
+                "Ν.ΗΡΑΚΛΕΙΟ",
+                "Ν.ΙΩΝΙΑ",
+                "Ν.ΜΑΚΡΗ",
+                "Ν.ΣΜΥΡΝΗ",
+                "Π.ΠΕΝΤΕΛΗ",
+                "Π.ΦΑΛΗΡΟ",
+                "ΠΑΓΚΡΑΤΙ ΝΕΟ",
+                "ΠΑΛΛΗΝΗ",
+                "ΠΑΤΗΣΙΑ ΑΝΩ",
+                "ΠΑΤΗΣΙΑ ΚΑΤΩ",
+                "ΠΕΡΙΣΤΕΡΙ",
+                "ΠΕΤΡΑΛΩΝΑ ΑΝΩ",
+                "ΠΕΤΡΟΥΠΟΛΗ",
+                "ΠΕΥΚΗ",
+                "ΠΛ.ΒΑΘΗ",
+                "ΠΛ.ΚΟΛΙΑΤΣΟΥ",
+                "ΡΑΦΗΝΑ",
+                "ΣΕΠΟΛΙΑ",
+                "ΣΠΑΤΑ",
+                "ΣΥΝΤΑΓΜΑ",
+                "ΧΑΙΔΑΡΙ",
+                "ΧΑΛΑΝΔΡΙ",
+                "ΧΑΛΚΟΥΤΣΙ",
+                "ΧΟΛΑΡΓΟΣ"
+            ],
+            "pharmacies": [
+                {
+                    "dieuthinsi": "ΑΓ.ΑΝΑΡΓΥΡΩΝ  32 ΚΑΙ ΣΟΦ. ΒΕΝΙΖΕΛΟΥ",
+                    "farmakeio": "ΚΟΥΖΩΦ ΘΕΟΔΩΡΑ - ΜΑΡΑΒΕΓΙΑΣ ΜΑΡΙΟΣ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΓ.ΑΝΑΡΓΥΡΟΙ",
+                    "tilefono": "2102610275"
+                },
+                {
+                    "dieuthinsi": "ΕΛ.ΒΕΝΙΖΕΛΟΥ 9",
+                    "farmakeio": "ΒΑΙΟΠΟΥΛΟΥ ΔΕΣΠΟΙΝΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΓ.ΒΑΡΒΑΡΑ",
+                    "tilefono": "2105397744"
+                },
+                {
+                    "dieuthinsi": "ΝΑΥΑΡΧΟΥ ΝΟΤΑΡΑ 60",
+                    "farmakeio": "ΤΣΟΚΑ ΑΛΕΞΑΝΔΡΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΓ.ΔΗΜΗΤΡΙΟΣ",
+                    "tilefono": "2109732803"
+                },
+                {
+                    "dieuthinsi": "ΚΑΦΑΝΤΑΡΗ 3-ΒΟΥΛΙΑΓΜΕΝΗΣ",
+                    "farmakeio": "ΠΑΡΘΥΜΟΣ ΓΕΩΡΓΙΟΣ ΚΑΙ ΣΙΑ Ε.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΑΓ.ΙΩΑΝΝΗΣ ΒΟΥΛΙΑΓΜΕΝΗΣ",
+                    "tilefono": "2109019785"
+                },
+                {
+                    "dieuthinsi": "ΓΡΗΓ. ΛΑΜΠΡΑΚΗ 1",
+                    "farmakeio": "ΓΟΥΗΤΕΛ ΕΛΕΝΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΑΓ.ΣΤΕΦΑΝΟΣ",
+                    "tilefono": "2108141137"
+                },
+                {
+                    "dieuthinsi": "ΜΙΝΩΟΣ 53",
+                    "farmakeio": "ΣΠΥΡΛΙΔΑΚΗΣ ΣΠΥΡΙΔΩΝ ΚΑΙ ΣΙΑ ΟΕ.",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΑΙΓΑΛΕΩ",
+                    "tilefono": "2105610098"
+                },
+                {
+                    "dieuthinsi": "ΑΝΔΡΟΥΤΣΟΥ 8",
+                    "farmakeio": "ΚΟΡΩΝΑΙΟΣ ΘΕΟΔΩΡΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΛΙΜΟΣ",
+                    "tilefono": "2109889963"
+                },
+                {
+                    "dieuthinsi": "ΜΕΣΟΓΕΙΩΝ 109-111",
+                    "farmakeio": "ΚΟΛΟΚΟΥΡΗ ΕΛΕΝΗ - ΧΡΥΣΙΚΟΠΟΥΛΟΥ ΓΕΩΡΓΙΑ ΚΑΙ ΣΙΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΑΜΠΕΛΟΚΗΠΟΙ",
+                    "tilefono": "2106984953"
+                },
+                {
+                    "dieuthinsi": "Λ. ΚΗΦΙΣΙΑΣ 39",
+                    "farmakeio": "ΠΑΥΛΟΠΟΥΛΟΥ ΜΑΓΔΑΛΗΝΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΜΠΕΛΟΚΗΠΟΙ",
+                    "tilefono": "2121041568"
+                },
+                {
+                    "dieuthinsi": "ΙΟΝΙΟΥ ΠΕΛΑΓΟΥΣ 42Β ΚΑΙ ΠΗΝΕΙΟΥ",
+                    "farmakeio": "ΦΡΑΓΚΟΥ ΑΡΤΑ ΚΑΙ ΣΙΑ ΟΕ.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΝΩ ΛΙΟΣΙΑ",
+                    "tilefono": "2102474311"
+                },
+                {
+                    "dieuthinsi": "ΘΗΡΑΣ 102-ΤΡΑΠΕΖΟΥΝΤΟΣ",
+                    "farmakeio": "ΑΦΕΝΔΡΑ ΜΑΡΙΑ ΑΝΝΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΑΡΓΥΡΟΥΠΟΛΗ",
+                    "tilefono": "2109955268"
+                },
+                {
+                    "dieuthinsi": "ΛΕΩΦ. ΒΡΑΥΡΩΝΟΣ 74",
+                    "farmakeio": "ΠΟΤΑΜΙΑΝΟΥ ΑΓΓΕΛΙΚΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΑΡΤΕΜΙΣ",
+                    "tilefono": "2294085120"
+                },
+                {
+                    "dieuthinsi": "ΕΙΡΗΝΗΣ 30  ΚΑΙ ΙΩΑΝ.ΠΡΟΔΡΟΜΟΥ",
+                    "farmakeio": "ΚΑΜΠΟΛΗΣ ΔΗΜΗΤΡΙΟΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΑΣΠΡΟΠΥΡΓΟΣ",
+                    "tilefono": "2105574683"
+                },
+                {
+                    "dieuthinsi": "ΣΤΑΜΑΤΙΟΥ ΜΠΟΥΓΕΣΗ 8",
+                    "farmakeio": "ΛΕΚΚΑΣ ΝΙΚΟΛΑΟΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΑΥΛΩΝΑΣ",
+                    "tilefono": "2295041673"
+                },
+                {
+                    "dieuthinsi": "ΑΦΙΔΝΑΙ",
+                    "farmakeio": "ΚΟΡΟΒΕΣΗ ΣΟΦΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 8 ΒΡΑΔΥ",
+                    "perioxi": "ΑΦΙΔΝΑΙ",
+                    "tilefono": "2295022500"
+                },
+                {
+                    "dieuthinsi": "ΑΓ.ΔΙΟΝΥΣΙΟΥ 82",
+                    "farmakeio": "ΜΠΟΥΝΤΖΑΝ ΡΟΥΣΛΑΝ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΑΧΑΡΝΑΙ",
+                    "tilefono": "2102444771"
+                },
+                {
+                    "dieuthinsi": "ΑΛ.ΠΑΝΑΓΟΥΛΗ 13",
+                    "farmakeio": "ΤΣΙΡΛΗ ΑΝΝΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΒΟΥΛΙΑΓΜΕΝΗ",
+                    "tilefono": "2108900203"
+                },
+                {
+                    "dieuthinsi": "ΓΑΛΑΤΣΙΟΥ-ΚΑΡΑΙΣΚΑΚΗ 3",
+                    "farmakeio": "ΧΡΙΣΤΟΔΟΥΛΟΥ ΑΙΚΑΤΕΡΙΝΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΓΑΛΑΤΣΙ",
+                    "tilefono": "2102923480"
+                },
+                {
+                    "dieuthinsi": "ΛΕΩΦ. ΣΠΑΤΩΝ 56 ΚΑΙ ΣΙΚΕΛΙΑΝΟΥ",
+                    "farmakeio": "ΘΕΟΧΑΡΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ - ΦΩΤΙΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΓΕΡΑΚΑΣ",
+                    "tilefono": "2106610601"
+                },
+                {
+                    "dieuthinsi": "ΜΟΜΦΕΡΑΤΟΥ 93-ΠΑΝΑΓΙΩΤΑΡΑ",
+                    "farmakeio": "ΝΟΥΣΚΑ ΑΘΗΝΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΓΚΥΖΗ",
+                    "tilefono": "2106462770"
+                },
+                {
+                    "dieuthinsi": "ΑΝΝΗΣ ΜΑΡΙΑΣ 19",
+                    "farmakeio": "ΓΕΡΑΡΔΗ ΜΑΡΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΓΛΥΚΑ ΝΕΡΑ",
+                    "tilefono": "2106659265"
+                },
+                {
+                    "dieuthinsi": "ΓΕΩΡΓ. ΓΕΝΝΗΜΑΤΑ 97",
+                    "farmakeio": "ΚΑΝΑΡΗ ΕΛΕΝΗ - ΑΝΔΡΙΑΝΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΓΛΥΦΑΔΑ",
+                    "tilefono": "2109625020"
+                },
+                {
+                    "dieuthinsi": "ΒΑΣ. ΓΕΩΡΓΙΟΥ Β 10",
+                    "farmakeio": "ΜΠΙΡΜΠΑΣ ΜΙΛΤΙΑΔΗΣ - ΧΑΡΑΛΑΜΠΟΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΓΛΥΦΑΔΑ",
+                    "tilefono": "2108983447"
+                },
+                {
+                    "dieuthinsi": "ΕΘΝ.ΑΝΤΙΣΤΑΣΕΩΣ 88",
+                    "farmakeio": "ΣΤΥΛΙΑΡΑ  ΕΛΕΝΗ - ΜΑΡΟΥΓΚΑ  ΑΘΗΝΑ Ο.Ε. ( ΜΕDICARE PHARMACIES )",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΕΛΕΥΣΙΝΑ",
+                    "tilefono": "2105541216"
+                },
+                {
+                    "dieuthinsi": "Γ.ΠΑΠΑΝΔΡΕΟΥ 4",
+                    "farmakeio": "ΣΙΓΑΝΟΥ ΣΤΑΥΡΟΥΛΑ ΣΙΓΑΝΟΥ ΑΝΔΡΙΑΝΗ  Ο.Ε",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΖΩΓΡΑΦΟΥ",
+                    "tilefono": "2107771119"
+                },
+                {
+                    "dieuthinsi": "Λ.ΔΗΜΟΚΡΑΤΙΑΣ 35",
+                    "farmakeio": "ΚΟΜΙΑΝΟΥ ΑΙΚΑΤΕΡΙΝΗ ΧΡΙΣΤΙΝΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΗΛΙΟΥΠΟΛΗ",
+                    "tilefono": "2109730470"
+                },
+                {
+                    "dieuthinsi": "ΠΛΑΤΕΙΑ  ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΕΩΣ  5 Α",
+                    "farmakeio": "ΣΑΠΟΡΙΤΑ ΣΑΛΒΑΤΟΡΕ ΚΑΙ ΣΙΑ ΟΕ.( 3 )",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΗΛΙΟΥΠΟΛΗ",
+                    "tilefono": "2130454662"
+                },
+                {
+                    "dieuthinsi": "ΚΩΝ/ΠΟΛΕΩΣ 106 ΚΑΙ Π.ΜΕΛΑ",
+                    "farmakeio": "ΠΑΠΑΔΗΜΗΤΡΙΟΥ ΣΑΡΑΝΤΟΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΙΛΙΟΝ",
+                    "tilefono": "2105017724"
+                },
+                {
+                    "dieuthinsi": "ΔΗΜΟΣΘΕΝΟΥΣ 88",
+                    "farmakeio": "ΦΟΥΣΚΑΡΗΣ ΠΑΝΑΓΙΩΤΗΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΚΑΛΛΙΘΕΑ",
+                    "tilefono": "2109571722"
+                },
+                {
+                    "dieuthinsi": "ΧΡ.ΡΑΠΤΗ 43",
+                    "farmakeio": "ΚΟΥΡΗΣ ΛΑΜΠΡΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΚΑΛΥΒΙΑ ΘΟΡΙΚΟΥ",
+                    "tilefono": "2299047033"
+                },
+                {
+                    "dieuthinsi": "ΣΟΛΩΝΟΣ 60",
+                    "farmakeio": "ΤΖΕΜΟΣ ΓΡΗΓΟΡΙΟΣ ΚΑΙ ΣΙΑ Ο.Ε.( 2 )",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΚΕΝΤΡΟ",
+                    "tilefono": "2103600060"
+                },
+                {
+                    "dieuthinsi": "Λ.ΑΘΗΝΩΝ-ΣΟΥΝΙΟΥ 11",
+                    "farmakeio": "ΤΑΚΑΚΗ ΚΑΛΛΙΟΠΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΚΕΡΑΤΕΑ",
+                    "tilefono": "2299042515"
+                },
+                {
+                    "dieuthinsi": "ΧΑΡ.ΤΡΙΚΟΥΠΗ  171",
+                    "farmakeio": "ΗΛΙΟΠΟΥΛΟΥ ΑΘΑΝΑΣΙΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΚΗΦΙΣΙΑ",
+                    "tilefono": "2106200532"
+                },
+                {
+                    "dieuthinsi": "ΒΑΣ.ΚΩΝΣΤΑΝΤΙΝΟΥ 137",
+                    "farmakeio": "ΝΙΚΟΛΑΚΗ ΠΑΡΑΣΚΕΥΗ ΚΑΙ ΣΙΑ Ε.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΚΟΡΩΠΙ",
+                    "tilefono": "2106627487"
+                },
+                {
+                    "dieuthinsi": "ΒΕΙΚΟΥ 23 - 25",
+                    "farmakeio": "ΠΑΣΙΑΛΗ-ΤΣΙΤΣΕΚΛΗ ΜΑΓΔΑΛΗΝΗ - ΤΣΙΤΣΕΚΛΗΣ ΕΥΑΓΓΕΛΟΣ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΚΟΥΚΑΚΙ",
+                    "tilefono": "2109220783"
+                },
+                {
+                    "dieuthinsi": "ΚΥΨΕΛΗΣ 80",
+                    "farmakeio": "ΤΣΙΡΑΚΗΣ  ΒΑΣΙΛΕΙΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΚΥΨΕΛΗ",
+                    "tilefono": "2108214124"
+                },
+                {
+                    "dieuthinsi": "ΛΕΩΦ.ΚΑΛΥΒΙΩΝ ΚΑΙ ΦΙΛΟΠΑΠΠΟΥ",
+                    "farmakeio": "ΑΠΟΣΤΟΛΟΥ ΧΡΗΣΤΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΛΑΓΟΝΗΣΙ",
+                    "tilefono": "2291023037"
+                },
+                {
+                    "dieuthinsi": "ΒΑΣ.ΓΕΩΡΓΙΟΥ ΚΑΙ ΕΡΜΟΥ",
+                    "farmakeio": "ΖΑΓΟΥΡΗ ΓΕΩΡΓΙΑ ΚΑΙ ΣΙΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΛΑΥΡΙΟ",
+                    "tilefono": "2292024333"
+                },
+                {
+                    "dieuthinsi": "ΚΟΡΟΠΟΥΛΗ  25",
+                    "farmakeio": "ΓΙΑΝΝΟΥ ΓΕΩΡΓΙΟΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΜΑΝΔΡΑ",
+                    "tilefono": "2105555844"
+                },
+                {
+                    "dieuthinsi": "ΛΕΩΦ. ΚΑΤΩ ΣΟΥΛΙΟΥ 131",
+                    "farmakeio": "ΜΠΟΤΣΗΣ ΣΤΑΜΑΤΙΟΣ",
+                    "katastasi": "False",
+                    "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΜΑΡΑΘΩΝΑΣ",
+                    "tilefono": "2294067519"
+                },
+                {
+                    "dieuthinsi": "ΠΛΑΤΕΙΑ ΣΩΤΗΡΙΟΥ 31",
+                    "farmakeio": "ΒΕΡΓΙΝΗΣ ΙΩΑΝΝΗΣ ΚΑΙ ΣΙΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΜΑΡΚΟΠΟΥΛΟ",
+                    "tilefono": "2299022500"
+                },
+                {
+                    "dieuthinsi": "Λ.Π.ΡΑΦΤΗ 4",
+                    "farmakeio": "ΔΡΑΚΟΥ ΜΑΡΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΜΑΡΚΟΠΟΥΛΟ",
+                    "tilefono": "2299025192"
+                },
+                {
+                    "dieuthinsi": "ΔΙΟΝΥΣΟΥ 43",
+                    "farmakeio": "ΔΡΟΣΟΥ ΑΙΚΑΤΕΡΙΝΗ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΜΑΡΟΥΣΙ",
+                    "tilefono": "2108067628"
+                },
+                {
+                    "dieuthinsi": "ΣΩΤΗΡΟΣ 19",
+                    "farmakeio": "ΚΟΥΡΣΟΠΟΥΛΟΣ ΙΩΑΝΝΗΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΜΕΓΑΡΑ",
+                    "tilefono": "2296029290"
+                },
+                {
+                    "dieuthinsi": "ΠΡΑΣΙΝΟΥ ΛΟΦΟΥ 6",
+                    "farmakeio": "ΧΡΙΣΤΟΦΙΔΗΣ ΧΡΗΣΤΟΣ-ΧΡΙΣΤΟΦΙΔΗΣ ΣΩΤΗΡΙΟΣ Ο.Ε.",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "Ν.ΗΡΑΚΛΕΙΟ",
+                    "tilefono": "2102822118"
+                },
+                {
+                    "dieuthinsi": "ΕΛ ΑΛΑΜΕΙΝ 40 ΚΑΙ ΦΙΛΗΝΤΑ 1",
+                    "farmakeio": "ΣΚΟΥΤΑΡΗ ΑΝΑΣΤΑΣΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "Ν.ΙΩΝΙΑ",
+                    "tilefono": "2102712016"
+                },
+                {
+                    "dieuthinsi": "34 ΧΛΜ Λ.ΜΑΡΑΘΩΝΟΣ",
+                    "farmakeio": "ΧΑΛΜΟΥΚΗ-ΧΑΡΗ ΠΗΝΕΛΟΠΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "Ν.ΜΑΚΡΗ",
+                    "tilefono": "2294096495"
+                },
+                {
+                    "dieuthinsi": "Κ.ΠΑΛΑΙΟΛΟΓΟΥ 27",
+                    "farmakeio": "ΚΑΡΑΝΤΩΝΗ ΑΝΤΩΝΙΑ-ΚΑΤΣΙΓΙΑΝΝΗ Π. ΚΑΙ ΣΙΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "Ν.ΣΜΥΡΝΗ",
+                    "tilefono": "2109331896"
+                },
+                {
+                    "dieuthinsi": "ΒΑΣ.ΓΕΩΡΓΙΟΥ Β 3",
+                    "farmakeio": "ΚΩΤΣΟΓΙΑΝΝΗ ΔΗΜΗΤΡΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "Π.ΠΕΝΤΕΛΗ",
+                    "tilefono": "2108030209"
+                },
+                {
+                    "dieuthinsi": "ΕΛ. ΒΕΝΙΖΕΛΟΥ  216",
+                    "farmakeio": "ΚΟΖΩΝΗ ΧΡΥΣΟΥΛΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "Π.ΦΑΛΗΡΟ",
+                    "tilefono": "2109848958"
+                },
+                {
+                    "dieuthinsi": "ΝΙΚΗΦΟΡΙΔΗ 35",
+                    "farmakeio": "ΒΡΟΝΤΟΥ ΒΑΣΙΛΙΚΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΑΓΚΡΑΤΙ ΝΕΟ",
+                    "tilefono": "2107653696"
+                },
+                {
+                    "dieuthinsi": "ΒΥΖΑΝΤΙΟΥ 9",
+                    "farmakeio": "ΒΑΛΚΑΝΟΣ ΕΥΑΓΓΕΛΟΣ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΠΑΛΛΗΝΗ",
+                    "tilefono": "2106669613"
+                },
+                {
+                    "dieuthinsi": "ΑΝΔΡΟΥΤΣΟΥ 13",
+                    "farmakeio": "ΜΠΕΖΕΡΙΑΝΟΣ ΔΗΜΗΤΡΙΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΑΛΛΗΝΗ",
+                    "tilefono": "2106030666"
+                },
+                {
+                    "dieuthinsi": "ΚΟΝΔΥΛΑΚΗ 1 ΚΑΙ ΠΛΑΤΕΙΑ ΠΑΠΑΔΙΑΜΑΝΤΗ",
+                    "farmakeio": "ΓΙΑΖΝΤΑΝΙ ΖΟΝΟΥΖ ΣΙΝΑ ( ΦΑΡΜΑΚΕΙΟ Γ.ΒΑΚΙΡΛΗ ΚΑΙ ΣΙΑ Ο.Ε.)",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΠΑΤΗΣΙΑ ΑΝΩ",
+                    "tilefono": "2102019208"
+                },
+                {
+                    "dieuthinsi": "ΜΙΧΑΗΛ ΒΟΔΑ 195",
+                    "farmakeio": "ΣΚΟΥΤΕΛΗ ΕΛΙΖΑ ΚΑΙ ΣΙΑ Ε.Ε. (Pharmacy Pireos 26)",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΑΤΗΣΙΑ ΚΑΤΩ",
+                    "tilefono": "2105236300"
+                },
+                {
+                    "dieuthinsi": "ΜΩΡΟΓΙΑΝΝΗ  17 ΚΑΙ  ΙΟΥ",
+                    "farmakeio": "ΚΟΥΚΟΥΒΙΝΟΥ ΓΕΩΡΓΙΑ-ΠΑΤΑΠΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΕΡΙΣΤΕΡΙ",
+                    "tilefono": "2105722582"
+                },
+                {
+                    "dieuthinsi": "ΘΗΒΩΝ 86",
+                    "farmakeio": "ΠΕΤΡΟΠΟΥΛΟΣ ΙΩΑΝΝΗΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΕΡΙΣΤΕΡΙ",
+                    "tilefono": "2105717579"
+                },
+                {
+                    "dieuthinsi": "ΑΓ. ΙΕΡΟΘΕΟΥ 75",
+                    "farmakeio": "ΨΑΘΑ ΜΑΡΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΠΕΡΙΣΤΕΡΙ",
+                    "tilefono": "2105770803"
+                },
+                {
+                    "dieuthinsi": "ΔΡΥΟΠΩΝ 5-7",
+                    "farmakeio": "ΓΟΥΛΑΚΟΣ ΣΠΥΡΙΔΩΝ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΕΤΡΑΛΩΝΑ ΑΝΩ",
+                    "tilefono": "2103470014"
+                },
+                {
+                    "dieuthinsi": "ΕΛ. ΒΕΝΙΖΕΛΟΥ 129",
+                    "farmakeio": "ΜΑΚΡΥΔΑΚΗ ΜΑΡΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΕΤΡΟΥΠΟΛΗ",
+                    "tilefono": "2105061558"
+                },
+                {
+                    "dieuthinsi": "ΒΙΤΣΙ 14",
+                    "farmakeio": "ΓΚΕΡΜΠΕΣΙΩΤΟΥ ΑΙΚΑΤΕΡΙΝΗ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΠΕΥΚΗ",
+                    "tilefono": "2108029271"
+                },
+                {
+                    "dieuthinsi": "ΚΑΡΟΛΟΥ 27-ΠΛ.ΚΑΡΑΙΣΚΑΚΗ",
+                    "farmakeio": "ΧΡΙΣΤΟΦΙΔΟΥ ΓΛΑΥΚΗ - ΕΛΕΥΘΕΡΙΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΠΛ.ΒΑΘΗ",
+                    "tilefono": "2105234074"
+                },
+                {
+                    "dieuthinsi": "Ι.ΔΡΟΣΟΠΟΥΛΟΥ 187 ΚΑΙ ΚΕΑΣ 9",
+                    "farmakeio": "ΒΑΛΑΤΣΟΣ ΔΗΜΗΤΡΙΟΣ (Ε.ΘΕΟΔΩΡΟΠΟΥΛΟΥ ) Ε.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΠΛ.ΚΟΛΙΑΤΣΟΥ",
+                    "tilefono": "2102281565"
+                },
+                {
+                    "dieuthinsi": "ΕΘΝ.ΑΝΤΙΣΤΑΣΕΩΣ  10",
+                    "farmakeio": "ΛΟΥΙΖΟΣ ΝΙΚΟΛΑΟΣ  ΚΑΙ  ΣΙΑ Ο.Ε. (ΔΕΥΤΕΡΟ ΦΑΡΜ )",
+                    "katastasi": "False",
+                    "orario": "11 ΒΡΑΔΥ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΡΑΦΗΝΑ",
+                    "tilefono": "2294025558"
+                },
+                {
+                    "dieuthinsi": "ΚΥΠΡΙΩΝ ΑΓΩΝΙΣΤΩΝ 17",
+                    "farmakeio": "ΤΣΩΚΟΥ ΑΝΑΣΤΑΣΙΑ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΡΑΦΗΝΑ",
+                    "tilefono": "2294026526"
+                },
+                {
+                    "dieuthinsi": "ΚΡΕΟΝΤΟΣ 159",
+                    "farmakeio": "ΜΙΧΑΗΛΙΔΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ - ΜΙΧΑΗΛΙΔΗ ΜΕΛΙΝΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 9 ΒΡΑΔΥ",
+                    "perioxi": "ΣΕΠΟΛΙΑ",
+                    "tilefono": "2105142631"
+                },
+                {
+                    "dieuthinsi": "ΒΑΣ.ΠΑΥΛΟΥ  86",
+                    "farmakeio": "ΤΖΑΝΑΚΗΣ ΕΛΕΥΘΕΡΙΟΣ-ΤΖΑΝΑΚΗ ΣΤΑΥΡΟΥΛΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΣΠΑΤΑ",
+                    "tilefono": "2106634834"
+                },
+                {
+                    "dieuthinsi": "ΜΗΤΡΟΠΟΛΕΩΣ  54",
+                    "farmakeio": "ΛΩΛΑΣ ΠΕΤΡΟΣ",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΣΥΝΤΑΓΜΑ",
+                    "tilefono": "2103310052"
+                },
+                {
+                    "dieuthinsi": "ΠΛΑΤΩΝΟΣ 34",
+                    "farmakeio": "ΓΕΩΡΓΟΠΟΥΛΟΥ ΑΔΑΜΑΝΤΙΑ - ΜΑΡΙΑ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΧΑΙΔΑΡΙ",
+                    "tilefono": "2105324590"
+                },
+                {
+                    "dieuthinsi": "ΠΛΑΤΩΝΟΣ 9",
+                    "farmakeio": "ΜΑΡΤΣΟΥΚΑΣ ΜΑΡΙΟΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΧΑΛΑΝΔΡΙ",
+                    "tilefono": "2106820071"
+                },
+                {
+                    "dieuthinsi": "ΑΓΙΟΥ ΑΝΤΩΝΙΟΥ 116",
+                    "farmakeio": "ΣΑΛΙΒΕΡΟΥ ΜΑΡΙΑΝΝΑ (ΔΟΥΚΑΣ ΙΩΑΝΝΗΣ) Ο.Ε.",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 2 ΜΕΣΗΜΕΡΙ & 5 ΑΠΟΓΕΥΜΑ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ",
+                    "perioxi": "ΧΑΛΑΝΔΡΙ",
+                    "tilefono": "2106396162"
+                },
+                {
+                    "dieuthinsi": "ΔΟΥΚ.ΠΛΑΚΕΝΤΙΑΣ 29",
+                    "farmakeio": "ΤΡΕΜΠΕΛΑ ΕΥΔΟΞΙΑ ΚΑΙ ΣΙΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΧΑΛΑΝΔΡΙ",
+                    "tilefono": "2106890949"
+                },
+                {
+                    "dieuthinsi": "ΠΛΑΤΕΙΑ ΧΑΛΚΟΥΤΣΙΟΥ",
+                    "farmakeio": "ΡΑΠΤΗΣ ΑΛΚΙΒΙΑΔΗΣ",
+                    "katastasi": "True",
+                    "orario": "8 ΠΡΩΙ - 8 ΠΡΩΙ ΕΠΟΜΕΝΗΣ ΗΜΕΡΑΣ",
+                    "perioxi": "ΧΑΛΚΟΥΤΣΙ",
+                    "tilefono": "2295071920"
+                },
+                {
+                    "dieuthinsi": "17 ΝΟΕΜΒΡΙΟΥ 6",
+                    "farmakeio": "ΚΩΝΣΤΑ ΚΑΛΗ ΚΑΙ ΣΙΑ Ο.Ε.",
+                    "katastasi": "False",
+                    "orario": "8 ΠΡΩΙ - 11 ΒΡΑΔΥ",
+                    "perioxi": "ΧΟΛΑΡΓΟΣ",
+                    "tilefono": "2106511792"
+                }
+            ]
+        }
     }
 
     return (
         <View style={styles.container}>
             <StatusBar style="dark"/>
             <ScrollView style={styles.main}>
-                {data.map((pharmacy, index) => (
-                    <View style={styles.item}>
+                {pharmacies.map((pharmacy, index) => (
+                    <View style={styles.item} key={index}>
                         <View style={styles.item_head}>
                             <Text style={styles.item_head_text}>{pharmacy.perioxi}</Text>
                         </View>
