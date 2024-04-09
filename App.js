@@ -1,19 +1,41 @@
 import {StatusBar} from 'expo-status-bar';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {useEffect, useState} from "react";
+import {StyleSheet} from 'react-native';
+import {useEffect, useLayoutEffect, useState} from "react";
+import Pharmacies from "./components/Pharmacies";
+import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import Districts from "./components/Districts";
 import {Ionicons} from "@expo/vector-icons";
 
-
+const Stack = createNativeStackNavigator();
 export default function App() {
 
+    // const [pharmaciesCopy, setPharmaciesCopy] = useState([])
     const [pharmacies, setPharmacies] = useState([])
+    const [districts, setDistricts] = useState([])
+    const [districtOption, setDistrictOption] = useState('All')
 
-    useEffect(() => {
-        let data = getData()
-        setPharmacies(data.pharmacies)
+    useLayoutEffect(() => {
+        let data = getData().then((data)=>{
+            setDistricts(data.districts)
+            setPharmacies(data.pharmacies)
+            // setPharmaciesCopy(data.pharmacies)
+        })
+
     }, []);
 
-    function getData() {
+    useEffect(() => {
+        console.log('option changed')
+    }, [districtOption]);
+
+    // useEffect(() => {
+    //         filter(districtOption).then((filtered)=>{
+    //             setPharmacies(filtered)
+    //             console.log(pharmacies.length)
+    //         })
+    // }, [pharmacies]);
+
+    async function getData() {
         return {
             "date": "Δευτέρα, 8 Απριλίου 2024",
             "districts": [
@@ -679,35 +701,58 @@ export default function App() {
         }
     }
 
+    function menu(navigation, districts){
+        console.log(pharmacies.length)
+        navigation.navigate('Districts', {'districts': districts})
+    }
+
+    function selectDistrict(district){
+       setDistrictOption(district)
+    }
+
+    async function filter(query){
+        return pharmacies.filter((item) => {
+            return item.perioxi === query
+        })
+    }
+
     return (
-        <View style={styles.container}>
+        <NavigationContainer>
             <StatusBar style="dark"/>
-            <ScrollView style={styles.main}>
-                {pharmacies.map((pharmacy, index) => (
-                    <View style={styles.item} key={index}>
-                        <View style={styles.item_head}>
-                            <Text style={styles.item_head_text}>{pharmacy.perioxi}</Text>
-                        </View>
-                        <View style={styles.item_row}>
-                            <Ionicons name={'add'} size={18} />
-                            <Text style={styles.item_text}>{pharmacy.farmakeio}</Text>
-                        </View>
-                        <View style={styles.item_row}>
-                            <Ionicons name={'map'} size={18} />
-                            <Text style={styles.item_text}>{pharmacy.dieuthinsi}</Text>
-                        </View>
-                        <View style={styles.item_row}>
-                            <Ionicons name={'time'} size={18} />
-                            <Text style={styles.item_text}>{pharmacy.orario}</Text>
-                        </View>
-                        <View style={styles.item_row}>
-                            <Ionicons name={'call'} size={18} />
-                            <Text style={styles.item_text}>{pharmacy.tilefono}</Text>
-                        </View>
-                    </View>
-                ))}
-            </ScrollView>
-        </View>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Pharmacies"
+                    options={({navigation}) => ({
+                        title: 'Pharmacies',
+                        headerTitleAlign: 'center',
+                        headerLeft: ({tintColor}) => (
+                            <Ionicons
+                                icon="menu"
+                                size={24}
+                                color={tintColor}
+                                style={{marginRight: 15}}
+                                onPress={menu.bind(this,navigation, districts)}
+                                name="menu"
+                            />
+                        ),
+                        // headerRight: ({tintColor}) => (
+                        //     <Ionicons
+                        //         icon="add"
+                        //         size={24}
+                        //         color={tintColor}
+                        //         onPress={refresh}
+                        //         name="refresh"
+                        //     />
+                        // )
+                    })}
+                >
+                    {props => <Pharmacies {...props} pharmacies={pharmacies}/>}
+                </Stack.Screen>
+                <Stack.Screen name="Districts">
+                    {props => <Districts {...props} districts={districts} onSelect={selectDistrict} />}
+                </Stack.Screen>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
@@ -718,31 +763,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    main:{
-        marginTop: 50
-    },
-    item:{
-        marginBottom: 10,
-        borderWidth: 1,
-        borderColor: 'black',
-        paddingVertical: 2,
-        paddingHorizontal: 5,
-        borderRadius: 10,
-        marginHorizontal: 14,
-        width: '90%'
-    },
-    item_row:{
-        flexDirection: 'row',
-        paddingVertical: 4,
-    },
-    item_head:{
-        borderBottomWidth: 1
-    },
-    item_head_text:{
-        textAlign: 'center',
-        fontWeight: 'bold'
-    },
-    item_text:{
-        paddingLeft: 5,
-    }
 });
