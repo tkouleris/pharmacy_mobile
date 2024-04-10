@@ -1,5 +1,7 @@
-import {ScrollView, StyleSheet, Text, View} from "react-native";
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import React from "react";
+
 
 function Pharmacies({pharmacies}){
     return (
@@ -7,7 +9,10 @@ function Pharmacies({pharmacies}){
             {pharmacies.map((pharmacy, index) => (
                 <View style={styles.item} key={index}>
                     <View style={styles.item_head}>
-                        <Text style={styles.item_head_text}>{pharmacy.perioxi}</Text>
+                        <Image style={styles.image_head} source={pharmacy.katastasi === 'False'  ? require('../assets/fsa-kleisto-70.png') : require('../assets/fsa-anoixto-70.png')} />
+                        <View style={{paddingTop: 5,marginLeft:3}}>
+                            <Text style={styles.item_head_text}>{pharmacy.perioxi}</Text>
+                        </View>
                     </View>
                     <View style={styles.item_row}>
                         <Ionicons name={'add'} size={18} />
@@ -52,7 +57,15 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
     },
     item_head:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'stretch',
         borderBottomWidth: 1
+    },
+    image_head:{
+        width: 30,
+        height: 30,
+        marginRight: 3
     },
     item_head_text:{
         textAlign: 'center',

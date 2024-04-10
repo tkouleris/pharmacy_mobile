@@ -702,7 +702,6 @@ export default function App() {
     }
 
     function menu(navigation, districts){
-        console.log(pharmacies.length)
         navigation.navigate('Districts', {'districts': districts})
     }
 
@@ -719,11 +718,16 @@ export default function App() {
     return (
         <NavigationContainer>
             <StatusBar style="dark"/>
-            <Stack.Navigator>
+            <Stack.Navigator
+                screenOptions={{
+                    headerLeft: null,
+                    headerBackVisible: false,
+                }}
+            >
                 <Stack.Screen
                     name="Pharmacies"
                     options={({navigation}) => ({
-                        title: 'Pharmacies',
+                        title: 'Φαρμακεία',
                         headerTitleAlign: 'center',
                         headerLeft: ({tintColor}) => (
                             <Ionicons
@@ -748,7 +752,10 @@ export default function App() {
                 >
                     {props => <Pharmacies {...props} pharmacies={pharmacies.filter((p) => districtOption === 'All' || p.perioxi === districtOption)}  />}
                 </Stack.Screen>
-                <Stack.Screen name="Districts">
+                <Stack.Screen
+                    name="Districts"
+                    options={{ title: 'Περιοχές', headerTitleAlign: 'center', }}
+                >
                     {props => <Districts {...props} districts={districts} onSelect={selectDistrict} />}
                 </Stack.Screen>
             </Stack.Navigator>

@@ -9,15 +9,20 @@ function Districts({navigation, districts, onSelect}){
 
     return <View style={styles.main}>
         <ScrollView >
-            <View style={styles.district} key={-1}>
-                <Text>All</Text>
-            </View>
+            <Pressable
+                onPress={filterPharmacies.bind(this, 'All')} key={-1}
+                style={({pressed})=>[styles.district, pressed && styles.pressed]}
+            >
+                <View >
+                    <Text>All</Text>
+                </View>
+            </Pressable>
             {districts.map((district, index) => (
                 <Pressable
                     onPress={filterPharmacies.bind(this, district)} key={index}
-                    // style={({pressed})=>[styles.citySelection, pressed && styles.pressed]}
+                    style={({pressed})=>[styles.district, pressed && styles.pressed]}
                 >
-                    <View style={styles.district}>
+                    <View >
                         <Text>{district}</Text>
                     </View>
                 </Pressable>
@@ -40,5 +45,10 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         borderRadius: 10,
         paddingLeft:10
-    }
+    },
+    pressed:{
+        opacity: 0.75,
+        backgroundColor: '#5a5a5a',
+        borderRadius: 4
+    },
 })
