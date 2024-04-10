@@ -1,5 +1,5 @@
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet} from 'react-native';
+import {Image, StyleSheet, View, Text} from 'react-native';
 import {useEffect, useLayoutEffect, useState} from "react";
 import Pharmacies from "./components/Pharmacies";
 import {NavigationContainer} from '@react-navigation/native'
@@ -727,7 +727,13 @@ export default function App() {
                 <Stack.Screen
                     name="Pharmacies"
                     options={({navigation}) => ({
-                        title: 'Φαρμακεία',
+                        // title: 'Φαρμακεία',
+                        headerTitle: () =>  {
+                                return <View style={{flexDirection: 'row'}}>
+                                    <Image style={{width:35, height: 35, marginRight: 3}} source={require('./assets/farmakeio.png')} />
+                                    <Text style={{fontSize: 24, marginLeft: 3}}>Φαρμακείο</Text>
+                                </View>
+                        },
                         headerTitleAlign: 'center',
                         headerLeft: ({tintColor}) => (
                             <Ionicons
