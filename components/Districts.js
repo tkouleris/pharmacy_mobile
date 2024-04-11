@@ -1,7 +1,6 @@
 import {View, Text, ScrollView, StyleSheet, Pressable} from "react-native";
 
 function Districts({navigation, districts, onSelect}){
-
     function filterPharmacies(district){
         onSelect(district)
         navigation.navigate('Pharmacies')
