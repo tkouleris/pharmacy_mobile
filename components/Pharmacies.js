@@ -1,5 +1,4 @@
-import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
-import {Ionicons} from "@expo/vector-icons";
+import {ScrollView, StyleSheet} from "react-native";
 import React from "react";
 import Pharmacy from "./Pharmacy";
 
